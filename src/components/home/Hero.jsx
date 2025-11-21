@@ -19,7 +19,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <section className="relative min-h-screen flex items-start bg-primary overflow-hidden pt-20 md:pt-48">
+        <section className="relative min-h-screen flex items-start bg-primary overflow-hidden pt-20 md:pt-48 pb-16 md:pb-0">
             {/* Background Elements */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(192,160,98,0.05),transparent_50%)]" />

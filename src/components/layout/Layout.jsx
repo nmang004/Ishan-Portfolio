@@ -67,7 +67,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`fixed w-full z-[9999] transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-white py-4 md:bg-transparent md:py-6'}`}>
+        <nav className={`fixed w-full z-[10003] transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-white py-4 md:bg-transparent md:py-6'}`}>
             <div className="container-custom flex justify-between items-center relative z-[10000]">
                 <Link to="/" className="text-2xl font-serif font-bold text-primary tracking-tight">
                     Ishan Perera<span className="text-accent">.</span>
