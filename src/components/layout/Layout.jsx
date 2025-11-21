@@ -67,8 +67,8 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`fixed w-full z-[100] transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
-            <div className="container-custom flex justify-between items-center relative z-[101]">
+        <nav className={`fixed w-full z-[9999] transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-white py-4 md:bg-transparent md:py-6'}`}>
+            <div className="container-custom flex justify-between items-center relative z-[10000]">
                 <Link to="/" className="text-2xl font-serif font-bold text-primary tracking-tight">
                     Ishan Perera<span className="text-accent">.</span>
                 </Link>
@@ -91,7 +91,7 @@ const Navbar = () => {
 
                 {/* Mobile Toggle */}
                 <button
-                    className="md:hidden text-primary p-2 z-[101] relative"
+                    className="md:hidden text-primary p-2 z-[10000] relative"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle menu"
                 >
@@ -107,7 +107,7 @@ const Navbar = () => {
                         animate="open"
                         exit="closed"
                         variants={menuVariants}
-                        className="fixed inset-0 bg-white z-[90] flex flex-col justify-center items-center md:hidden"
+                        className="fixed inset-0 bg-white z-[9998] flex flex-col justify-center items-center md:hidden"
                     >
                         <div className="flex flex-col space-y-8 text-center">
                             {navLinks.map((link) => (
