@@ -1,15 +1,25 @@
+import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import headshot from '../../assets/ishanheadshot.jpg';
 
 const Hero = () => {
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
     const { scrollY } = useScroll();
     const y1 = useTransform(scrollY, [0, 500], [0, 100]);
     const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
+    useEffect(() => {
+        const handleResize = () => {
+            setIsDesktop(window.innerWidth >= 768);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
-        <section className="relative min-h-screen flex items-start bg-primary overflow-hidden pt-32 md:pt-48">
+        <section className="relative min-h-screen flex items-start bg-primary overflow-hidden pt-20 md:pt-48">
             {/* Background Elements */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(192,160,98,0.05),transparent_50%)]" />
@@ -22,7 +32,7 @@ const Hero = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Text Content */}
                     <motion.div
-                        style={{ y: y1, opacity }}
+                        style={{ y: y1, ...(isDesktop && { opacity }) }}
                         className="order-2 lg:order-1 text-center lg:text-left"
                     >
                         <motion.div

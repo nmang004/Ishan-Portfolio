@@ -107,7 +107,7 @@ const Navbar = () => {
                         animate="open"
                         exit="closed"
                         variants={menuVariants}
-                        className="fixed inset-0 bg-white z-[9998] flex flex-col justify-center items-center md:hidden"
+                        className="fixed inset-0 bg-white z-[10001] flex flex-col justify-center items-center md:hidden"
                     >
                         <div className="flex flex-col space-y-8 text-center">
                             {navLinks.map((link) => (
