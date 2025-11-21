@@ -20,6 +20,15 @@ const Navbar = () => {
         setIsOpen(false);
     }, [location]);
 
+    // Lock body scroll when menu is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [isOpen]);
+
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'About', path: '/about' },
@@ -27,9 +36,39 @@ const Navbar = () => {
         { name: 'Research', path: '/research' },
     ];
 
+    const menuVariants = {
+        closed: {
+            opacity: 0,
+            x: "100%",
+            transition: {
+                type: "spring",
+                stiffness: 400,
+                damping: 40,
+                staggerChildren: 0.05,
+                staggerDirection: -1
+            }
+        },
+        open: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                type: "spring",
+                stiffness: 400,
+                damping: 40,
+                staggerChildren: 0.07,
+                delayChildren: 0.2
+            }
+        }
+    };
+
+    const linkVariants = {
+        closed: { opacity: 0, x: 50 },
+        open: { opacity: 1, x: 0 }
+    };
+
     return (
         <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
-            <div className="container-custom flex justify-between items-center">
+            <div className="container-custom flex justify-between items-center relative z-50">
                 <Link to="/" className="text-2xl font-serif font-bold text-primary tracking-tight">
                     Ishan Perera<span className="text-accent">.</span>
                 </Link>
@@ -51,8 +90,12 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile Toggle */}
-                <button className="md:hidden text-primary" onClick={() => setIsOpen(!isOpen)}>
-                    {isOpen ? <X size={24} /> : <Menu size={24} />}
+                <button
+                    className="md:hidden text-primary p-2 z-50 relative"
+                    onClick={() => setIsOpen(!isOpen)}
+                    aria-label="Toggle menu"
+                >
+                    {isOpen ? <X size={28} /> : <Menu size={28} />}
                 </button>
             </div>
 
@@ -60,21 +103,28 @@ const Navbar = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="absolute top-full left-0 w-full bg-white shadow-lg md:hidden"
+                        initial="closed"
+                        animate="open"
+                        exit="closed"
+                        variants={menuVariants}
+                        className="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 flex flex-col justify-center items-center md:hidden"
                     >
-                        <div className="flex flex-col p-6 space-y-4">
+                        <div className="flex flex-col space-y-8 text-center">
                             {navLinks.map((link) => (
-                                <Link
-                                    key={link.name}
-                                    to={link.path}
-                                    className={`text-lg font-medium ${location.pathname === link.path ? 'text-accent' : 'text-primary'}`}
-                                >
-                                    {link.name}
-                                </Link>
+                                <motion.div key={link.name} variants={linkVariants}>
+                                    <Link
+                                        to={link.path}
+                                        className={`text-3xl font-serif font-bold ${location.pathname === link.path ? 'text-accent' : 'text-primary'}`}
+                                    >
+                                        {link.name}
+                                    </Link>
+                                </motion.div>
                             ))}
+                            <motion.div variants={linkVariants}>
+                                <Link to="/contact" className="btn-primary px-8 py-3 text-lg mt-4 inline-block">
+                                    Get in Touch
+                                </Link>
+                            </motion.div>
                         </div>
                     </motion.div>
                 )}

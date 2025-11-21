@@ -69,7 +69,7 @@ const About = () => {
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="lg:col-span-5 bg-surface-alt p-8 rounded-2xl border border-slate-100"
+                        className="lg:col-span-5 bg-surface-alt p-6 md:p-8 rounded-2xl border border-slate-100"
                     >
                         <h3 className="text-2xl font-serif font-bold text-primary mb-6">My Philosophy</h3>
                         <blockquote className="italic text-slate-600 mb-6 border-l-4 border-accent pl-4">

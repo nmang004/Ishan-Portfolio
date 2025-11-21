@@ -18,7 +18,7 @@ const Hero = () => {
                     transition={{ duration: 0.8 }}
                 >
                     <h2 className="text-accent font-medium tracking-widest uppercase mb-4">Neurosurgeon & Researcher</h2>
-                    <h1 className="text-5xl md:text-7xl font-serif font-bold text-primary-dark mb-6">
+                    <h1 className="text-4xl md:text-7xl font-serif font-bold text-primary-dark mb-6">
                         {personalInfo.name}
                     </h1>
                     <p className="text-xl md:text-2xl text-secondary max-w-2xl mx-auto mb-10 font-light">

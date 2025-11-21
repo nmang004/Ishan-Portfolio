@@ -35,7 +35,7 @@ const Research = () => {
         </motion.div>
 
         {/* Controls */}
-        <div className="max-w-5xl mx-auto mb-12 flex flex-col md:flex-row gap-6 items-center justify-between">
+        <div className="max-w-5xl mx-auto mb-12 flex flex-col-reverse md:flex-row gap-6 items-center justify-between">
           {/* Filter Tabs */}
           <div className="flex flex-wrap gap-2 justify-center">
             {filters.map((f) => (

@@ -82,7 +82,7 @@ const Contact = () => {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100"
+                        className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-slate-100"
                     >
                         <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
