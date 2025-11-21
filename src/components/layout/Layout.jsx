@@ -67,8 +67,8 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
-            <div className="container-custom flex justify-between items-center relative z-50">
+        <nav className={`fixed w-full z-[100] transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
+            <div className="container-custom flex justify-between items-center relative z-[101]">
                 <Link to="/" className="text-2xl font-serif font-bold text-primary tracking-tight">
                     Ishan Perera<span className="text-accent">.</span>
                 </Link>
@@ -91,7 +91,7 @@ const Navbar = () => {
 
                 {/* Mobile Toggle */}
                 <button
-                    className="md:hidden text-primary p-2 z-50 relative"
+                    className="md:hidden text-primary p-2 z-[101] relative"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle menu"
                 >
@@ -107,7 +107,7 @@ const Navbar = () => {
                         animate="open"
                         exit="closed"
                         variants={menuVariants}
-                        className="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 flex flex-col justify-center items-center md:hidden"
+                        className="fixed inset-0 bg-white z-[90] flex flex-col justify-center items-center md:hidden"
                     >
                         <div className="flex flex-col space-y-8 text-center">
                             {navLinks.map((link) => (
@@ -115,13 +115,18 @@ const Navbar = () => {
                                     <Link
                                         to={link.path}
                                         className={`text-3xl font-serif font-bold ${location.pathname === link.path ? 'text-accent' : 'text-primary'}`}
+                                        onClick={() => setIsOpen(false)}
                                     >
                                         {link.name}
                                     </Link>
                                 </motion.div>
                             ))}
                             <motion.div variants={linkVariants}>
-                                <Link to="/contact" className="btn-primary px-8 py-3 text-lg mt-4 inline-block">
+                                <Link
+                                    to="/contact"
+                                    className="btn-primary px-8 py-3 text-lg mt-4 inline-block"
+                                    onClick={() => setIsOpen(false)}
+                                >
                                     Get in Touch
                                 </Link>
                             </motion.div>
