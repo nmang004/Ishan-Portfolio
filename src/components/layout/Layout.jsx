@@ -91,7 +91,7 @@ const Navbar = () => {
 
                 {/* Mobile Toggle */}
                 <button
-                    className="md:hidden text-primary p-2 z-[10000] relative"
+                    className="md:hidden text-primary p-2 z-[10002] relative"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle menu"
                 >

@@ -32,7 +32,7 @@ const Hero = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Text Content */}
                     <motion.div
-                        style={{ y: y1, ...(isDesktop && { opacity }) }}
+                        style={{ ...(isDesktop && { y: y1, opacity }) }}
                         className="order-2 lg:order-1 text-center lg:text-left"
                     >
                         <motion.div
