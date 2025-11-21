@@ -48,24 +48,18 @@ const Navbar = () => {
     const menuVariants = {
         closed: {
             opacity: 0,
-            x: "100%",
             transition: {
-                type: "spring",
-                stiffness: 400,
-                damping: 40,
+                duration: 0.2,
                 staggerChildren: 0.05,
                 staggerDirection: -1
             }
         },
         open: {
             opacity: 1,
-            x: 0,
             transition: {
-                type: "spring",
-                stiffness: 400,
-                damping: 40,
+                duration: 0.2,
                 staggerChildren: 0.07,
-                delayChildren: 0.2
+                delayChildren: 0.1
             }
         }
     };
@@ -118,6 +112,15 @@ const Navbar = () => {
                         variants={menuVariants}
                         className="fixed inset-0 bg-white z-[10001] flex flex-col justify-center items-center md:hidden"
                     >
+                        {/* Close Button */}
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            className="absolute top-6 right-6 p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors"
+                            aria-label="Close menu"
+                        >
+                            <X size={28} className="text-primary" />
+                        </button>
+
                         <div className="flex flex-col space-y-8 text-center">
                             {navLinks.map((link) => (
                                 <motion.div key={link.name} variants={linkVariants}>
